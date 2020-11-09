@@ -2,4 +2,6 @@
 
 require_relative '../lib/environment.rb'
 
-CurrentBroadwayShows::CLI.new.call
+#CurrentBroadwayShows::CLI.new.call
+#CurrentBroadwayShows::Scraper.new.create_show_hash("https://www.playbill.com/productions?venue-type=broadway")
+CurrentBroadwayShows::Show.new_from_array
