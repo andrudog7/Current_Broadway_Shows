@@ -2,7 +2,6 @@
 
 require_relative '../lib/environment.rb'
 
-CurrentBroadwayShows::Show.new_from_array
 CurrentBroadwayShows::CLI.new.call
 
 
