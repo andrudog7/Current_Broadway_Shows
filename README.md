@@ -1,6 +1,8 @@
 # CurrentBroadwayShows
 
-Curent Broadway Shows will give users information on the shows currently on Broadway in New York.  They will be able to see a list of all shows or sort by Musicals or Plays.  They can also see Tony Winning shows.
+Welcome to the Broadway CLI Application!
+
+This app will allow users to access information on current Broadway Shows in New York.  They will be able to select a specific show based on a few different cateogries including (Musicals, Plays, Top 5 Grossing Current Shows, Cheapest Shows, etc.)
 
 ## Installation
 
@@ -18,9 +20,15 @@ Or install it yourself as:
 
     $ gem install Current_Broadway_Shows
 
+The following gems are needed to successfully run this CLI and are required in the bin/librarian folder: nokogiri, open-uri and pry.
+To install:
+gem install nokogiri
+gem install open-uri
+gem install pry
+
 ## Usage
 
-Available for use to the public.
+To execute this CLI, type ruby bin/current_broadway_shows into the terminal. You will be greeted with category options to view Broadway Shows.
 
 ## Development
 
@@ -30,8 +38,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/Current_Broadway_Shows. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/Current_Broadway_Shows/blob/master/CODE_OF_CONDUCT.md).
+This project is intended to be a welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/Current_Broadway_Shows. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/Current_Broadway_Shows/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
