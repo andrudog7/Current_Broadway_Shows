@@ -179,7 +179,7 @@ Enter the number of the Broadway show you would like more information about (Ent
     def category_theaters
         puts "THEATERS:"
         CurrentBroadwayShows::Show.theaters.each.with_index(1) do |show, i|
-            puts "#{i}. #{show.theater} - #{choice.title}"
+            puts "#{i}. #{show.theater} - #{show.title}"
         end
         puts "
 Enter the number of a theater below to view the show that is currently playing:"

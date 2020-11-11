@@ -73,7 +73,7 @@ class CurrentBroadwayShows::Show
     end
 
     def self.five_cheapest_shows
-        open_shows = self.all.select{|show| show.open? -- true}
+        open_shows = self.all.select{|show| show.open? == true}
         open_shows.sort{|show_a, show_b| show_a.average_ticket_price.gsub(/[^0-9]/, '').to_i <=> show_b.average_ticket_price.gsub(/[^0-9]/, '').to_i}[0, 5]
     end
 
