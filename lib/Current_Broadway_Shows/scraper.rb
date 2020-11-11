@@ -1,6 +1,5 @@
 class CurrentBroadwayShows::Scraper
     
-
     def self.create_shows_array(url)
         page = Nokogiri::HTML(open(url))
         shows = []
@@ -31,7 +30,7 @@ class CurrentBroadwayShows::Scraper
                 if show_page.css(".bsp-bio-content a").first.text == "Pete Townshend" or show_page.css(".bsp-bio-content a").first.text  == "Matthew Lopez" or show_page.css(".bsp-bio-content a").first.text  == "David Byrne"
                     "Theater To Be Announced"
                 else
-                    show_page.css(".bsp-bio-content a").first.text
+                    show_page.css(".bsp-bio-content a").first.text.strip
                 end,
             :average_ticket_price =>
                 if show_page.css(".bsp-component-group.quick-stats .stat-right")[1] == nil

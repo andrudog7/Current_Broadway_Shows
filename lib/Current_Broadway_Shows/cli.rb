@@ -1,7 +1,8 @@
 class CurrentBroadwayShows::CLI
+    
     def call
         puts "Please wait as we load your gem!"
-CurrentBroadwayShows::Show.new_from_array
+        CurrentBroadwayShows::Show.new_from_array
         puts "                                                                                                                                                   
 8 888888888o   8 888888888o.      ,o888888o.           .8.          8 888888888o.    `8.`888b                 ,8' .8.   `8.`8888.      ,8' 
 8 8888    `88. 8 8888    `88.  . 8888     `88.        .888.         8 8888    `^888.  `8.`888b               ,8' .888.   `8.`8888.    ,8'  
@@ -30,7 +31,7 @@ Which category of current Broadway shows would you like to view? (Enter 1 - 8):
     7.  Theater List
     8.  Exit"
         user_input = gets.strip.to_i
-        if user_input < 1 or user_input > 7
+        if user_input < 1 or user_input > 8
             puts "Please select a valid number."
             menu
         elsif user_input == 1
@@ -55,21 +56,17 @@ Which category of current Broadway shows would you like to view? (Enter 1 - 8):
     def choice_output(choice)
         if choice.open? == true
         puts "  
-#{choice.title} is currently playing at: #{choice.theater}.
-    #{choice.type}
-    #{choice.gross}
-    #{choice.average_ticket_price}
-    #{choice.average_capacity}."
-                puts "  
-Visit #{choice.show_url} for more information!
-    "
+#{choice.title} is currently playing at: #{choice.theater}."
         else puts "
-#{choice.title} is scheduled to open at: #{choice.theater}.
-    #{choice.type}
+#{choice.title} is scheduled to open at: #{choice.theater}."
+        end
+        puts "    #{choice.type}
     #{choice.gross}
     #{choice.average_ticket_price}
-    #{choice.average_capacity}."
-        end
+    #{choice.average_capacity}.
+
+Visit #{choice.show_url} for more information!
+        "
     sleep(1)
     puts "Select 'm' for main menu or 'x' to exit:"
         user_input = gets.strip 
@@ -182,7 +179,7 @@ Enter the number of the Broadway show you would like more information about (Ent
             puts "#{i}. #{show.theater} - #{show.title}"
         end
         puts "
-Enter the number of a theater below to view the show that is currently playing:"
+Enter the number of a theater to view the show that is currently playing there:"
         user_input = gets.strip.to_i
         if user_input < 1 or user_input > CurrentBroadwayShows::Show.theaters.count
             puts "Please select a number between 1 and #{CurrentBroadwayShows::Show.theaters.count}."

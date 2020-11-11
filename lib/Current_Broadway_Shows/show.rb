@@ -1,6 +1,6 @@
 class CurrentBroadwayShows::Show
 
-    attr_accessor :title, :theater, :show_url, :type, :gross, :average_ticket_price, :average_capacity
+    attr_accessor :title, :show_url, :type
     @@all = []
 
     def initialize(title)
@@ -41,16 +41,8 @@ class CurrentBroadwayShows::Show
         stats = CurrentBroadwayShows::Scraper.scrape_show_stats(show.show_url)
         stats.each do |stat|
             stat.each do |key, value|
-                if key.to_s == "gross"
-                    show.gross = value
-                elsif key.to_s == "theater"
-                    show.theater = value.strip
-                elsif key.to_s == "average_ticket_price"
-                    show.average_ticket_price = value
-                elsif key.to_s == "average_capacity"
-                    show.average_capacity = value 
-                
-                end
+                self.class.attr_accessor(key)
+                self.send("#{key}=", value)
             end
         end
     end

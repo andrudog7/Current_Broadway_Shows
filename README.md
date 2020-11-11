@@ -6,6 +6,16 @@ This app will allow users to access information on current Broadway Shows in New
 
 ## Installation
 
+Run the program locally on your CLI by following these steps:
+#1. Clone the repo from https://github.com/andrudog7/current_broadway_shows
+#2. In the terminal, navigate to the 'cli-application' folder
+#3. Make sure Ruby is installed on your computer
+#4. Run bundle install to install the program's gems
+#5. To start the program type 'ruby bin/current_broadway_shows'
+#6. Follow the instructions in the Terminal.
+
+OR 
+
 Add this line to your application's Gemfile:
 
 ```ruby
