@@ -2,7 +2,7 @@ class CurrentBroadwayShows::CLI
     include VisualEffects
     
     def call
-        puts "Please wait as we load your gem!"
+        puts "Please wait as your program loads!"
         CurrentBroadwayShows::Show.new_from_playbill
         intro
         sleep(2)
@@ -13,8 +13,8 @@ class CurrentBroadwayShows::CLI
         puts "
 Which category of current Broadway shows would you like to view? (Enter 1 - 8):
     1.  Top 5 Grossing Shows
-    2.  The 5 Cheapest Shows based on average ticket price
-    3.  The 5 Easiest Shows to get into based on average capacity
+    2.  The 5 Cheapest Shows (based on average ticket price)
+    3.  The 5 Easiest Shows to get into (based on average capacity)
     4.  Musicals
     5.  Plays
     6.  All Shows
@@ -61,7 +61,7 @@ Visit #{choice.show_url} for more information!
     end
 
     def category_top_five_grossing
-        puts "TOP 5 GROSSING SHOWS CURRENTLY PLAYING:"
+        puts "💲 TOP 5 GROSSING SHOWS CURRENTLY PLAYING 💲"
         CurrentBroadwayShows::Show.top_five_grossing.each.with_index(1) do |show, i|
             puts "#{i}. #{show.title} - #{show.gross}"
         end
@@ -87,7 +87,7 @@ Enter the number of the Broadway show you would like more information about (Ent
     end
 
     def category_musicals
-        puts "CURRENT MUSICALS:"
+        puts "♫ CURRENT MUSICALS ♫"
         CurrentBroadwayShows::Show.musicals.each.with_index(1) do |show, i|
             puts "#{i}. #{show.title}"
         end
@@ -113,7 +113,7 @@ Enter the number of the Broadway Musical you would like more information about:"
     end
 
     def category_plays
-        puts "CURRENT PLAYS:"
+        puts "🎭 CURRENT PLAYS 🎭"
         CurrentBroadwayShows::Show.plays.each.with_index(1) do |show, i|
             puts "#{i}. #{show.title}"
         end
@@ -139,7 +139,7 @@ Enter the number of the Broadway Play you would like more information about:"
     end
 
     def category_all_shows
-        puts "CURRENT BROADWAY SHOWS:"
+        puts "🗽 CURRENT BROADWAY SHOWS 🗽"
         CurrentBroadwayShows::Show.all.each.with_index(1) do |show, i|
             puts "#{i}. #{show.title}"
         end
@@ -165,7 +165,7 @@ Enter the number of the Broadway show you would like more information about:"
     end
 
     def category_cheapest
-        puts "CHEAPEST SHOWS:"
+        puts "💰 CHEAPEST SHOWS 💰"
         CurrentBroadwayShows::Show.five_cheapest_shows.each.with_index(1) do |show, i|
             puts "#{i}. #{show.title} - #{show.average_ticket_price}"
         end
@@ -191,7 +191,7 @@ Enter the number of the Broadway show you would like more information about(Ente
     end
 
     def category_lowest_capacity
-        puts "EASIEST SHOWS TO GET INTO:"
+        puts "🎟 EASIEST SHOWS TO GET INTO 🎟"
         CurrentBroadwayShows::Show.five_lowest_capacity.each.with_index(1) do |show, i|
             puts "#{i}. #{show.title} - #{show.average_capacity}"
         end
@@ -217,7 +217,7 @@ Enter the number of the Broadway show you would like more information about (Ent
     end
 
     def category_theaters
-        puts "THEATERS:"
+        puts "🎩 THEATERS 🎩"
         CurrentBroadwayShows::Show.theaters.each.with_index(1) do |show, i|
             puts "#{i}. #{show.theater} - #{show.title}"
         end
