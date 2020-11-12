@@ -14,7 +14,7 @@ class CurrentBroadwayShows::CLI
 Which category of current Broadway shows would you like to view? (Enter 1 - 8):
     1.  Top 5 Grossing Shows
     2.  The 5 Cheapest Shows (based on average ticket price)
-    3.  The 5 Easiest Shows to get into (based on average capacity)
+    3.  The 5 Easiest Shows to Obtain Tickets To (based on average capacity)
     4.  Musicals
     5.  Plays
     6.  All Shows
