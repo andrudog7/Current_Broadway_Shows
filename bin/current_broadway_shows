@@ -3,6 +3,3 @@
 require_relative '../lib/environment.rb'
 
 CurrentBroadwayShows::CLI.new.call
-
-
-#CurrentBroadwayShows::Scraper.new.scrape_show_theater("https://www.playbill.com/production/take-me-outhelen-hayes-theater")

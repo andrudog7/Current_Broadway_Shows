@@ -2,7 +2,7 @@ class CurrentBroadwayShows::CLI
     
     def call
         puts "Please wait as we load your gem!"
-        CurrentBroadwayShows::Show.new_from_array
+        CurrentBroadwayShows::Show.new_from_playbill
         puts "                                                                                                                                                   
 8 888888888o   8 888888888o.      ,o888888o.           .8.          8 888888888o.    `8.`888b                 ,8' .8.   `8.`8888.      ,8' 
 8 8888    `88. 8 8888    `88.  . 8888     `88.        .888.         8 8888    `^888.  `8.`888b               ,8' .888.   `8.`8888.    ,8'  
@@ -32,7 +32,7 @@ Which category of current Broadway shows would you like to view? (Enter 1 - 8):
     8.  Exit"
         user_input = gets.strip.to_i
         if user_input < 1 or user_input > 8
-            puts "Please select a valid number."
+            puts "Please select a number between 1 and 8:"
             menu
         elsif user_input == 1
             category_top_five_grossing
@@ -67,14 +67,7 @@ Which category of current Broadway shows would you like to view? (Enter 1 - 8):
 
 Visit #{choice.show_url} for more information!
         "
-    sleep(1)
-    puts "Select 'm' for main menu or 'x' to exit:"
-        user_input = gets.strip 
-            if user_input == "m"
-                menu
-            elsif user_input == "x"
-                curtain
-            end
+        sleep(1)
     end
 
     def category_top_five_grossing
@@ -90,6 +83,16 @@ Enter the number of the Broadway show you would like more information about (Ent
             category_top_five_grossing
         else
         choice_output(CurrentBroadwayShows::Show.top_five_grossing[user_input - 1])
+        puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
+        user_input = gets.strip 
+            if user_input == "m"
+                menu
+            elsif user_input == "b"
+                category_top_five_grossing
+            elsif user_input == "x"
+                curtain
+            else puts "Please select 'b' for back, 'm' for main menu, or 'x' to exit:"
+            end
         end
     end
 
@@ -106,6 +109,16 @@ Enter the number of the Broadway Musical you would like more information about:"
                 category_musicals
             else
             choice_output(CurrentBroadwayShows::Show.musicals[user_input - 1])
+            puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
+        user_input = gets.strip 
+            if user_input == "m"
+                menu
+            elsif user_input == "b"
+                category_musicals
+            elsif user_input == "x"
+                curtain
+            else puts "Please select 'b' for back, 'm' for main menu, or 'x' to exit:"
+            end
             end
     end
 
@@ -122,6 +135,16 @@ Enter the number of the Broadway Play you would like more information about:"
             category_plays
         else
         choice_output(CurrentBroadwayShows::Show.plays[user_input - 1])
+        puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
+        user_input = gets.strip 
+            if user_input == "m"
+                menu
+            elsif user_input == "b"
+                category_plays
+            elsif user_input == "x"
+                curtain
+            else puts "Please select 'b' for back, 'm' for main menu, or 'x' to exit:"
+            end
         end
     end
 
@@ -138,6 +161,16 @@ Enter the number of the Broadway show you would like more information about:"
             category_all_shows
         elsif
         choice_output(CurrentBroadwayShows::Show.all[user_input - 1])
+        puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
+        user_input = gets.strip 
+            if user_input == "m"
+                menu
+            elsif user_input == "b"
+                category_all_shows
+            elsif user_input == "x"
+                curtain
+            else puts "Please select 'b' for back, 'm' for main menu, or 'x' to exit:"
+            end
         end
     end
 
@@ -154,6 +187,16 @@ Enter the number of the Broadway show you would like more information about(Ente
             category_cheapest
         else
         choice_output(CurrentBroadwayShows::Show.five_cheapest_shows[user_input - 1])
+        puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
+        user_input = gets.strip 
+            if user_input == "m"
+                menu
+            elsif user_input == "b"
+                category_cheapest
+            elsif user_input == "x"
+                curtain
+            else puts "Please select 'b' for back, 'm' for main menu, or 'x' to exit:"
+            end
         end
     end
 
@@ -170,6 +213,16 @@ Enter the number of the Broadway show you would like more information about (Ent
             category_lowest_capacity
         else
         choice_output(CurrentBroadwayShows::Show.five_lowest_capacity[user_input - 1])
+        puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
+        user_input = gets.strip 
+            if user_input == "m"
+                menu
+            elsif user_input == "b"
+                category_lowest_capacity
+            elsif user_input == "x"
+                curtain
+            else puts "Please select 'b' for back, 'm' for main menu, or 'x' to exit:"
+            end
         end
     end
 
@@ -186,6 +239,16 @@ Enter the number of a theater to view the show that is currently playing there:"
             category_theaters
         else
         choice_output(CurrentBroadwayShows::Show.theaters[user_input - 1])
+        puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
+        user_input = gets.strip 
+            if user_input == "m"
+                menu
+            elsif user_input == "b"
+                category_theaters
+            elsif user_input == "x"
+                curtain
+            else puts "Please select 'b' for back, 'm' for main menu, or 'x' to exit:"
+            end
         end
     end
 

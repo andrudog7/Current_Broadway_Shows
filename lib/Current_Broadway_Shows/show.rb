@@ -19,7 +19,7 @@ class CurrentBroadwayShows::Show
         self.all.find{|show| show.title == title}
     end
 
-    def self.new_from_array
+    def self.new_from_playbill
         shows_array = CurrentBroadwayShows::Scraper.create_shows_array("https://www.playbill.com/productions?venue-type=broadway")
         shows_array.each do |show|
             show.each do |key, value|
