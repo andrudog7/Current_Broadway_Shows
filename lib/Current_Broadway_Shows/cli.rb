@@ -1,8 +1,9 @@
 class CurrentBroadwayShows::CLI 
     include VisualEffects
+    include CLIHelperMethods
     
     def call
-        puts "Please wait as your program loads!"
+        puts "Please wait while we access the current Broadway Shows!"
         CurrentBroadwayShows::Show.new_from_playbill
         intro
         sleep(2)
@@ -11,18 +12,19 @@ class CurrentBroadwayShows::CLI
 
     def menu
         puts "
-Which category of current Broadway shows would you like to view? (Enter 1 - 8):
+Which category of current Broadway shows would you like to view? (Enter 1 - 9):
     1.  Top 5 Grossing Shows
     2.  The 5 Cheapest Shows (based on average ticket price)
     3.  The 5 Easiest Shows to Obtain Tickets To (based on average capacity)
-    4.  Musicals
-    5.  Plays
+    4.  All Musicals
+    5.  All Plays
     6.  All Shows
     7.  Theater List
-    8.  Exit"
+    8.  Coming Soon
+    9.  Exit"
         user_input = gets.strip.to_i
-        if user_input < 1 or user_input > 8
-            puts "Please select a number between 1 and 8:"
+        if user_input < 1 or user_input > 9
+            puts "Please select a number between 1 and 9:"
             menu
         elsif user_input == 1
             category_top_five_grossing
@@ -38,26 +40,11 @@ Which category of current Broadway shows would you like to view? (Enter 1 - 8):
             category_all_shows
         elsif user_input == 7
             category_theaters
-        else user_input == 8
+        elsif user_input == 8
+            category_coming_soon
+        else user_input == 9
             curtain
         end
-    end
-
-    def choice_output(choice)
-        if choice.open? == true
-        puts "  
-#{choice.title} is currently playing at: #{choice.theater}."
-        else puts "
-#{choice.title} is scheduled to open at: #{choice.theater}."
-        end
-        puts "    #{choice.type}
-    #{choice.gross}
-    #{choice.average_ticket_price}
-    #{choice.average_capacity}.
-
-Visit #{choice.show_url} for more information!
-        "
-        sleep(1)
     end
 
     def category_top_five_grossing
@@ -69,20 +56,15 @@ Visit #{choice.show_url} for more information!
 Enter the number of the Broadway show you would like more information about (Enter 1 - 5):"
         user_input = gets.strip.to_i
         if user_input < 1 or user_input > 5
-            puts "Please select a number between 1 and 5."
+            puts "Please select a valid number between 1 and 5."
             category_top_five_grossing
         else
-        choice_output(CurrentBroadwayShows::Show.top_five_grossing[user_input - 1])
-        puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
-        user_input = gets.strip 
-            if user_input == "m"
-                menu
-            elsif user_input == "b"
+            choice_output(CurrentBroadwayShows::Show.top_five_grossing[user_input - 1])
+            puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
+            input = check_user_input
+                if input == "b"
                 category_top_five_grossing
-            elsif user_input == "x"
-                curtain
-            else puts "Please select 'b' for back, 'm' for main menu, or 'x' to exit:"
-            end
+                end
         end
     end
 
@@ -95,20 +77,15 @@ Enter the number of the Broadway show you would like more information about (Ent
 Enter the number of the Broadway Musical you would like more information about:"
             user_input = gets.strip.to_i
             if user_input < 1 or user_input > CurrentBroadwayShows::Show.musicals.count
-                puts "Please select a number between 1 and #{CurrentBroadwayShows::Show.musicals.count}."
+                puts "Please select a valid number between 1 and #{CurrentBroadwayShows::Show.musicals.count}."
                 category_musicals
             else
             choice_output(CurrentBroadwayShows::Show.musicals[user_input - 1])
             puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
-        user_input = gets.strip 
-            if user_input == "m"
-                menu
-            elsif user_input == "b"
+            input = check_user_input
+                if input == "b"
                 category_musicals
-            elsif user_input == "x"
-                curtain
-            else puts "Please select 'b' for back, 'm' for main menu, or 'x' to exit:"
-            end
+                end
             end
     end
 
@@ -121,20 +98,15 @@ Enter the number of the Broadway Musical you would like more information about:"
 Enter the number of the Broadway Play you would like more information about:"
         user_input = gets.strip.to_i
         if user_input < 1 or user_input > CurrentBroadwayShows::Show.plays.count
-            puts "Please select a number between 1 and #{CurrentBroadwayShows::Show.plays.count}."
+            puts "Please select a valid number between 1 and #{CurrentBroadwayShows::Show.plays.count}."
             category_plays
         else
         choice_output(CurrentBroadwayShows::Show.plays[user_input - 1])
         puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
-        user_input = gets.strip 
-            if user_input == "m"
-                menu
-            elsif user_input == "b"
+            input = check_user_input
+                if input == "b"
                 category_plays
-            elsif user_input == "x"
-                curtain
-            else puts "Please select 'b' for back, 'm' for main menu, or 'x' to exit:"
-            end
+                end
         end
     end
 
@@ -147,20 +119,15 @@ Enter the number of the Broadway Play you would like more information about:"
 Enter the number of the Broadway show you would like more information about:"
         user_input = gets.strip.to_i
         if user_input < 1 or user_input >CurrentBroadwayShows::Show.all.count
-            puts "Please select a number between 1 and #{CurrentBroadwayShows::Show.all.count}."
+            puts "Please select a valid number between 1 and #{CurrentBroadwayShows::Show.all.count}."
             category_all_shows
         elsif
         choice_output(CurrentBroadwayShows::Show.all[user_input - 1])
         puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
-        user_input = gets.strip 
-            if user_input == "m"
-                menu
-            elsif user_input == "b"
+            input = check_user_input
+                if input == "b"
                 category_all_shows
-            elsif user_input == "x"
-                curtain
-            else puts "Please select 'b' for back, 'm' for main menu, or 'x' to exit:"
-            end
+                end
         end
     end
 
@@ -173,25 +140,20 @@ Enter the number of the Broadway show you would like more information about:"
 Enter the number of the Broadway show you would like more information about(Enter 1 - 5):"
         user_input = gets.strip.to_i
         if user_input < 1 or user_input > 5
-            puts "Please select a number between 1 and 5."
+            puts "Please select a valid number between 1 and 5."
             category_cheapest
         else
         choice_output(CurrentBroadwayShows::Show.five_cheapest_shows[user_input - 1])
         puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
-        user_input = gets.strip 
-            if user_input == "m"
-                menu
-            elsif user_input == "b"
+            input = check_user_input
+                if input == "b"
                 category_cheapest
-            elsif user_input == "x"
-                curtain
-            else puts "Please select 'b' for back, 'm' for main menu, or 'x' to exit:"
-            end
+                end
         end
     end
 
     def category_lowest_capacity
-        puts "🎟 EASIEST SHOWS TO GET INTO 🎟"
+        puts "🎟  EASIEST SHOWS TO GET INTO 🎟"
         CurrentBroadwayShows::Show.five_lowest_capacity.each.with_index(1) do |show, i|
             puts "#{i}. #{show.title} - #{show.average_capacity}"
         end
@@ -199,20 +161,15 @@ Enter the number of the Broadway show you would like more information about(Ente
 Enter the number of the Broadway show you would like more information about (Enter 1 - 5):"
         user_input = gets.strip.to_i
         if user_input < 1 or user_input > 5
-            puts "Please select a number between 1 and 5."
+            puts "Please select a valid number between 1 and 5."
             category_lowest_capacity
         else
         choice_output(CurrentBroadwayShows::Show.five_lowest_capacity[user_input - 1])
         puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
-        user_input = gets.strip 
-            if user_input == "m"
-                menu
-            elsif user_input == "b"
+            input = check_user_input
+                if input == "b"
                 category_lowest_capacity
-            elsif user_input == "x"
-                curtain
-            else puts "Please select 'b' for back, 'm' for main menu, or 'x' to exit:"
-            end
+                end
         end
     end
 
@@ -225,20 +182,36 @@ Enter the number of the Broadway show you would like more information about (Ent
 Enter the number of a theater to view the show that is currently playing there:"
         user_input = gets.strip.to_i
         if user_input < 1 or user_input > CurrentBroadwayShows::Show.theaters.count
-            puts "Please select a number between 1 and #{CurrentBroadwayShows::Show.theaters.count}."
+            puts "Please select a valid number between 1 and #{CurrentBroadwayShows::Show.theaters.count}."
             category_theaters
         else
         choice_output(CurrentBroadwayShows::Show.theaters[user_input - 1])
         puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
-        user_input = gets.strip 
-            if user_input == "m"
-                menu
-            elsif user_input == "b"
+            input = check_user_input
+                if input == "b"
                 category_theaters
-            elsif user_input == "x"
-                curtain
-            else puts "Please select 'b' for back, 'm' for main menu, or 'x' to exit:"
-            end
+                end
+        end
+    end
+
+    def category_coming_soon
+        puts "🎩 COMING SOON 🎩"
+        CurrentBroadwayShows::Show.coming_soon.each.with_index(1) do |show, i|
+            puts "#{i}. #{show.title}"
+        end
+        puts "
+Enter the number of an upcoming show:"
+        user_input = gets.strip.to_i
+        if user_input < 1 or user_input > CurrentBroadwayShows::Show.coming_soon.count
+            puts "Please select a valid number between 1 and #{CurrentBroadwayShows::Show.coming_soon.count}."
+            category_coming_soon
+        else
+        choice_output(CurrentBroadwayShows::Show.coming_soon[user_input - 1])
+        puts "Select 'b' to go back to the previous menu, 'm' to access the main menu or 'x' to exit:"
+            input = check_user_input
+                if input == "b"
+                category_coming_soon
+                end
         end
     end
 end

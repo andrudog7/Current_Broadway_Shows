@@ -77,4 +77,8 @@ class CurrentBroadwayShows::Show
     def open?
         self.gross == "Total Current Gross: Not Yet Available" ? false : true 
     end
+
+    def self.coming_soon
+        self.all.select{|show| show.open? == false}
+    end
 end
