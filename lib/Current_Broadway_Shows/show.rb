@@ -81,4 +81,8 @@ class CurrentBroadwayShows::Show
     def self.coming_soon
         self.all.select{|show| show.open? == false}
     end
+
+    def self.titles
+        self.all.sort {|show_a, show_b| show_a.title <=> show_b.title}
+    end
 end

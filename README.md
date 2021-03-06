@@ -4,6 +4,9 @@ Welcome to the Broadway CLI Application!
 
 This app will allow users to access information on current Broadway Shows in New York.  They will be able to select a specific show based on a few different cateogries including (Musicals, Plays, Top 5 Grossing Current Shows, Cheapest Shows, etc.)
 
+Demo Video: https://www.youtube.com/watch?v=CMmqWVKP56I&t=19s
+Blog Post: https://andrewksmoker.medium.com/the-emotional-rollercoaster-of-scraping-my-first-ruby-cli-gem-41492f1dea1f
+
 ## Installation
 
 Run the program locally on your CLI by following these steps:
