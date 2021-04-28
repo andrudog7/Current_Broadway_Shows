@@ -1,7 +1,7 @@
 class CurrentBroadwayShows::Scraper
     
     def self.create_shows_array(url)
-        page = Nokogiri::HTML(open(url))
+        page = Nokogiri::HTML(URI.open(url))
         shows = []
         page.css(".pb-pl-tile-wrapper").each do |show|
             shows << {
@@ -20,7 +20,7 @@ class CurrentBroadwayShows::Scraper
 
     def self.scrape_show_stats(url)
         stats = []
-        show_page = Nokogiri::HTML(open(url))
+        show_page = Nokogiri::HTML(URI.open(url))
         stats << {:gross =>
                 if show_page.css(".bsp-component-group.quick-stats .stat-left")[1] == nil
                     "Total Current Gross: Not Yet Available"

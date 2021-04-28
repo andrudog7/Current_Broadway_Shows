@@ -5,8 +5,6 @@ require_relative "Current_Broadway_Shows/cli.rb"
 require_relative "Current_Broadway_Shows/scraper.rb"
 require_relative "Current_Broadway_Shows/show.rb"
 
-
-require 'pry'
 require 'nokogiri'
 require 'open-uri'
 
